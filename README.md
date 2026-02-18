@@ -1,2 +1,23 @@
-# CI-CD-training
+# CICD Training - Calculatrice Python
+
+## Desciption 
+Projet CI/CD. Une calculatrice Python utilisée pour apprendre les bonnes pratiques d'intégration et de déploiment continus.
+
+## Fonctionnalitées
+- Addition
+- Soustraction 
+- Multiplication
+- Division (avec une gestion de la division par zéro) 
+
+## Installation 
+'''bash
+git clone https://github.com/sanyamsin/CI-CD-training.git
+cd CI-CD-training
+pip install -r requirements.txt
+'''
+
+## Tests
+'''bash
+pytest test_calculator.py -v
+'''
 Projet CI/CD - Calculatrice Python 
