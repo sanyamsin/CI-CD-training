@@ -50,3 +50,19 @@ jobs:
           name: coverage-report-${{ matrix.python-version }}
           path: htmlcov/
           retention-days: 14
+
+  docker:
+    name: Docker Build
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Docker image
+        run: docker build -t calculator-api:${{ github.sha }} .
+      - name: Test container
+        run: |
+          docker run -d -p 5000:5000 --name test-app calculator-api:${{ github.sha }}
+          sleep 5
+          curl -f http://localhost:5000/health
+          docker stop test-app
+          docker rm test-app
